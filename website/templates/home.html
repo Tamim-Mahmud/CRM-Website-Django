@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
+{% if user.is_authenticated %}
 
+<h1>Authentic user loged in</h1>
+ {% else %}
 <form action="{% url 'home' %}" method="POST">
   {%csrf_token %}
   <div class="container mt-5">
@@ -17,7 +20,6 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="username"
                   name="username"
                   required
                 />
@@ -27,7 +29,6 @@
                 <input
                   type="password"
                   class="form-control"
-                  id="password"
                   name="password"
                   required
                 />
@@ -42,5 +43,6 @@
     </div>
   </div>
 </form>
+{% endif %}
 
 {% endblock %}
