@@ -6,7 +6,7 @@
 <div class="container mt-5">
     <h1 class="mt-4">Individuals customer record </h1>
 
-    <div class="row row-cols-1 g-4">
+    <div class="row row-cols-1 g-4 mb-5">
         <div class="col">
             <div class="card h-100">
                 <div class="card-body">
@@ -21,6 +21,9 @@
             </div>
         </div>
     </div>
+
+    <a href="{% url 'home' %}"><button class="btn btn-secondary">Back</button></a>
+    <a href="{% url 'delete_record' customer_record.id %}"><button class="btn btn-danger">Delete</button></a>
 </div>
 
 {% endblock %}
