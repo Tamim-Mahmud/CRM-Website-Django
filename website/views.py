@@ -75,3 +75,19 @@ def add_record(request):
     else:
         messages.success(request,"Log in first......")
         return redirect('home')
+def update_customer_record(request,pk):
+    if request.user.is_authenticated:
+        instance = Record.objects.get(id=pk)
+        form = AddRecordForm(request.POST or None, instance=instance)
+        if request.method == 'POST' or None:
+            if form.is_valid():
+                form.save()
+                messages.success(request,"Form Has been updated .....")
+                return redirect('home')
+        return render(request,'update_record.html',{'form':form})
+    else:
+        messages.success(request,'Please login first ....')
+        return redirect('home')
+            
+                
+    
