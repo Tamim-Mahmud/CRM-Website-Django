@@ -18,20 +18,25 @@
     <div class="container-fluid">
         <a class="navbar-brand text-light" href="{% url 'home' %}">CRM</a>
         <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto flex align-items-center">
                 <li class="nav-item">
                     <a class="nav-link text-light" aria-current="page" href="{% url 'home' %}">Home</a>
+                    
                 </li>
+                
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link btn btn-secondary text-light" href="{% url 'logout' %}">Logout</a>
+                    <a class="nav-link text-light" aria-current="page" href="{% url 'add_record' %}">Add Record</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" aria-current="page" href="{% url 'logout' %}">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link btn btn-secondary text-light" href="{% url 'home' %}">Login</a>
+                    <a class="nav-link text-light" aria-current="page" href="{% url 'home' %}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-secondary text-light" href="{% url 'register' %}">Register</a>
+                    <a class="nav-link text-light" aria-current="page" href="{% url 'register' %}">Register</a>
                 </li>
                 {% endif %}
             </ul>

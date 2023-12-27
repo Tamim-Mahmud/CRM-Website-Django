@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Record
 
 class SignUpForm(UserCreationForm):
     email=forms.EmailField(label='',widget = forms.TextInput(attrs={'class': 'form-control','placeholder':'Your Email'}))
@@ -30,4 +31,57 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'	
 
-  
+
+class AddRecordForm(forms.ModelForm):
+    first_name = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control', 'label': ''}),
+    )
+    
+    last_name = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control', 'label':''}),
+    )
+    
+    email = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.EmailInput(attrs={'placeholder': 'Email', 'class': 'form-control', 'label': ''}),
+    )
+    
+    phone = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Phone', 'class': 'form-control', 'label': ''}),
+    )
+    
+    address = forms.CharField(
+        max_length=150,
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Address', 'class': 'form-control', 'label': ''}),
+    )
+    
+    city = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'City', 'class': 'form-control', 'label': ''}),
+    )
+    
+    state = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'State', 'class': 'form-control', 'label': ''}),
+    )
+    
+    zipcode = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Zip Code', 'class': 'form-control', 'label': ''}),
+    )
+    
+    class Meta:
+        model=Record
+        exclude=('user',)
+        
